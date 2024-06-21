@@ -3,6 +3,7 @@ import React from 'react';
 import { Table, TableHead, TableRow, TableHeader, TableBody } from "@/components/ui/table";
 import { ImageRow } from './ImageRow';
 import useImagesFromIDB from "@/utils/storage/hooks/useImagesFromIDB";
+import useImageAnalysis from '@/utils/hooks/useImageAnalysis';
 
 // Define types for content structure
 interface ImageTableHeader {
@@ -35,6 +36,15 @@ const imageTableRowContent: ImageTableRow = {
 
 export const ImageTable = () => {
   const { images } = useImagesFromIDB();
+  const { analyzeImage, analysisResults } = useImageAnalysis();
+
+  React.useEffect(() => {
+    images.forEach((base64Image, index) => {
+      if (!analysisResults[index]) {
+        analyzeImage(base64Image, index);
+      }
+    });
+  }, [images, analyzeImage, analysisResults]);
 
   return (
     <Table className="w-full">
@@ -53,7 +63,7 @@ export const ImageTable = () => {
             key={index}
             id={index + 1}
             base64Image={base64Image}
-            productDetails={imageTableRowContent.productDetails}
+            productDetails={analysisResults[index]?.productDetails || 'Analyzing...'}
             reviewInfo={imageTableRowContent.reviewInfo}
             dateInfo={imageTableRowContent.dateInfo}
           />

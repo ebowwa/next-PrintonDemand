@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import useMediaQuery from "@/hooks/user/use-media-query";
+import useMediaQuery from "@/utils/hooks/user/use-media-query";
 
 // Define types for content structure
 interface DrawerDialogContent {
