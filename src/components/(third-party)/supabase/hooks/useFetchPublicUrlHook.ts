@@ -2,7 +2,7 @@
 // for public supabase storage bucket
 "use client";
 import { useState, useEffect } from 'react';
-import { getPublicUrl } from '@/utils/supabase/storage';
+import { getPublicUrl } from '../utils/storage';
 
 // Custom hook for fetching a public URL from Supabase storage
 export const usePublicUrl = (bucketName: string, path: string) => {

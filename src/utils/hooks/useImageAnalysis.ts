@@ -11,7 +11,7 @@ export default function useImageAnalysis() {
   const analyzeImage = useCallback(async (base64Image: string, index: number) => {
     try {
       console.log('Sending request to analyze image');
-      const response = await fetch('/api/analyze-image', {
+      const response = await fetch('/api/analyze-images', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
