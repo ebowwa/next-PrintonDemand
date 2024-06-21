@@ -7,7 +7,8 @@ export const ImageComponent = ({ base64Image, index }: { base64Image: string; in
     key={index}
     src={base64Image}
     alt={`Converted Image ${index + 1}`}
-    style={{ maxWidth: '100%', height: 'auto' }}
+    width={200} // Add width property
+    height={200} // Add height property
     onError={(e) => {
       console.error('Error loading image:', e);
     }}

@@ -3,10 +3,21 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
+// Define the shape of the image data.
+interface ImageData {
+  src: string;
+  width: number;
+  height: number;
+  type: string;
+  model?: string;
+}
+
 // Define the shape of the context data.
 interface ImageContextType {
   showTable: boolean; // A boolean indicating whether to show a table.
   setShowTable: React.Dispatch<React.SetStateAction<boolean>>; // A function to update the showTable state.
+  images: ImageData[]; // Array to store image data.
+  setImages: React.Dispatch<React.SetStateAction<ImageData[]>>; // Function to update image data.
 }
 
 // Create a context with an initial value of undefined.
@@ -25,10 +36,11 @@ export const useConvertedImageContext = () => {
 // Provider component that will wrap parts of the app that need access to the context.
 export const ConvertedImageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [showTable, setShowTable] = useState(false); // State to manage whether to show a table.
+  const [images, setImages] = useState<ImageData[]>([]); // State to manage image data.
 
   // Provide the context value to all children.
   return (
-    <ConvertedImageContext.Provider value={{ showTable, setShowTable }}>
+    <ConvertedImageContext.Provider value={{ showTable, setShowTable, images, setImages }}>
       {children}
     </ConvertedImageContext.Provider>
   );
