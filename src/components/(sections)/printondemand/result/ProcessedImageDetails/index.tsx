@@ -1,7 +1,7 @@
 // src/components/sections/printondemand/GeminiProdAndConvertedImagesDetails.tsx
 import React from 'react';
 import { Header } from '@/components/(sections)/printondemand/result/Header';
-import { ImageTable } from '@/components/(sections)/printondemand/result/ImageTable';
+import { ImageTable } from '@/components/(sections)/printondemand/table/ImageTable';
 
 const ProcessedImageDetails = () => {
   return (

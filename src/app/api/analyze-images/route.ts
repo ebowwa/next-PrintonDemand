@@ -1,75 +1,96 @@
-// src/app/api/analyze-image/route.ts
-import { anthropic } from '@ai-sdk/anthropic';
-import { StreamingTextResponse, streamText } from 'ai';
+// src/app/api/analyze-images/route.ts
+import { streamText, StreamingTextResponse } from "ai";
+import { anthropic } from "@ai-sdk/anthropic";
 
-export const runtime = 'edge';
+type SupportedImageTypes =
+	| "image/jpeg"
+	| "image/png"
+	| "image/gif"
+	| "image/webp";
 
-type SupportedMediaType = "image/webp" | "image/png" | "image/jpeg" | "image/gif";
-
-function isSupportedMediaType(type: string): type is SupportedMediaType {
-  return ["image/webp", "image/png", "image/jpeg", "image/gif"].includes(type);
+function isSupportedImageType(type: string): type is SupportedImageTypes {
+	return ["image/jpeg", "image/png", "image/gif", "image/webp"].includes(type);
 }
 
 export async function POST(req: Request) {
-  const anthropicApiKey = process.env.ANTHROPIC_API_KEY;
-  if (!anthropicApiKey) {
-    return new Response("Anthropic API key not set", { status: 500 });
-  }
-
-  const { prompt } = await req.json();
-
-  // Check image size (assuming base64 encoding)
-  if (prompt.length > 6_464_471) {
-    return new Response("Image too large, maximum file size is 4.5MB.", { status: 400 });
-  }
-
-  const { type, data } = decodeBase64Image(prompt);
-  if (!type || !data) {
-    return new Response("Invalid image data", { status: 400 });
-  }
-
-  if (!isSupportedMediaType(type)) {
-    return new Response("Unsupported image type. Only WEBP, PNG, JPEG, and GIF are supported.", { status: 400 });
-  }
+  console.log("Entering POST function");
+  const requestId = Math.random().toString(36).substr(2, 9); // Generate a unique request ID
+  console.log(`Request ID: ${requestId} - Entering POST function`);
 
   try {
+    const { prompt } = await req.json();
+    console.log(`Request ID: ${requestId} - Received prompt:`, prompt);
+
+    if (prompt.length > 6_464_471) {
+      console.log(`Request ID: ${requestId} - Image too large`);
+      return new Response("Image too large, maximum file size is 4.5MB.", {
+        status: 400,
+      });
+    }
+
+    const { mimeType, image } = decodeBase64Image(prompt);
+    console.log(`Request ID: ${requestId} - Decoded image data`);
+
+    if (!mimeType || !image) {
+      console.log(`Request ID: ${requestId} - Invalid image data`);
+      return new Response("Invalid image data", { status: 400 });
+    }
+
+    if (!isSupportedImageType(mimeType)) {
+      console.log(`Request ID: ${requestId} - Unsupported image format`);
+      return new Response(
+        "Unsupported format. Only JPEG, PNG, GIF, and WEBP files are supported.",
+        { status: 400 }
+      );
+    }
+
     const result = await streamText({
-      model: anthropic('claude-3-haiku-20240307'),
       messages: [
         {
           role: "user",
           content: [
             {
               type: "text",
-              text: "Begin each of the following with a triangle symbol (▲ U+25B2): First, a brief description of the image to be used as alt text. Do not describe or extract text in the description. Second, the text extracted from the image, with newlines where applicable. Un-obstruct text if it is covered by something, to make it readable. Do not omit relevant text. If given a tweet, output the subtweets and comments as well. If there is no text in the image, only respond with the description. Do not include any other information.",
+              text: "Begin each of the following with a triangle symbol (▲ U+25B2): First, a brief description of the image to be used as alt text. Do not describe or extract text in the description. Second, the text extracted from the image, with newlines where applicable. Un-obstruct text if it is covered by something, to make it readable. If there is no text in the image, only respond with the description. Do not include any other information. Example: ▲ Lines of code in a text editor.▲ const x = 5; const y = 10; const z = x + y; console.log(z);",
             },
             {
               type: "image",
-              source: {
-                type: "base64",
-                media_type: type,
-                data,
-              },
+              image,
+              mimeType,
+            },
+          ],
+        },
+        {
+          role: "assistant",
+          content: [
+            {
+              type: "text",
+              text: "▲",
             },
           ],
         },
       ],
+      model: anthropic("claude-3-haiku-20240307"),
+      maxTokens: 300,
     });
 
-    return new StreamingTextResponse(result.stream);
+    console.log(`Request ID: ${requestId} - StreamText result received`);
+
+    const text = await result.text;
+    console.log(`Request ID: ${requestId} - Text result:`, text);
+
+    return new StreamingTextResponse(result.toAIStream());
   } catch (error) {
-    console.error('Error analyzing image:', error);
-    return new Response("Error analyzing image", { status: 500 });
+    console.error(`Request ID: ${requestId} - Error in POST function:`, error);
+    return new Response("Internal Server Error", { status: 500 });
   }
 }
 
-function decodeBase64Image(dataString: string): { type: string | null; data: string | null } {
-  const matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-  if (!matches || matches.length !== 3) {
-    return { type: null, data: null };
-  }
-  return {
-    type: matches[1],
-    data: matches[2],
-  };
+function decodeBase64Image(dataString: string) {
+	const matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+
+	return {
+		mimeType: matches?.[1],
+		image: matches?.[2],
+	};
 }
