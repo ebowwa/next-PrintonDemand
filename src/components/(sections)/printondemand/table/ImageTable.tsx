@@ -1,3 +1,4 @@
+// src/components/(sections)/printondemand/table/ImageTable.tsx
 import React, { useEffect, useState } from 'react';
 import { Table, TableHead, TableRow, TableHeader, TableBody } from "@/components/ui/table";
 import { ImageRow } from './ImageRow';
