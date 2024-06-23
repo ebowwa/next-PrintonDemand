@@ -1,18 +1,17 @@
 // components/Header.tsx
-import Link from "next/link"
-import { FlagIcon } from "@/components/ui/icons/system"
+import Link from "next/link";
 
 type HeaderContent = {
-  title: string
-  description: string
-  homepageUrl: string
-}
+  title: string;
+  description: string;
+  homepageUrl: string;
+};
 
 const content: HeaderContent = {
   title: "Affiliate Program",
   description: "Earn money by referring customers to Vercel. We provide the platform, you provide the referrals.",
   homepageUrl: "#",
-}
+};
 
 export function Header() {
   return (
@@ -30,5 +29,29 @@ export function Header() {
         </p>
       </div>
     </header>
-  )
+  );
+}
+
+export interface ClassnameIconProps {
+  className?: string;
+}
+
+export function FlagIcon({ className }: ClassnameIconProps) {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <line x1="4" x2="4" y1="22" y2="15" />
+    </svg>
+  );
 }

@@ -1,7 +1,7 @@
 'use server';
-// src/utils/stripe/server.ts
+
 import Stripe from 'stripe';
-import { stripe } from '@/components/(third-party)/stripe/utils/config';
+import { stripe } from './config';
 import { createClient } from '@/components/(third-party)/supabase/utils/server';
 import { createOrRetrieveCustomer } from '@/components/(third-party)/supabase/utils/admin';
 import {
@@ -9,7 +9,7 @@ import {
   getErrorRedirect,
   calculateTrialEndUnixTimestamp
 } from '@/utils/helpers';
-import { Tables } from '../../../types_db';
+import { Tables } from 'types_db';
 
 type Price = Tables<'prices'>;
 

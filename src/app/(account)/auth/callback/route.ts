@@ -1,5 +1,5 @@
 // src/app/auth/callback/route.ts
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@/components/(third-party)/supabase/utils/server';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 import { getErrorRedirect, getStatusRedirect } from '@/utils/helpers';

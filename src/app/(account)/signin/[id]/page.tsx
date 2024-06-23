@@ -1,5 +1,5 @@
 import Logo from '@/components/ui/icons/Logo';
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@/components/(third-party)/supabase/utils/server';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import {

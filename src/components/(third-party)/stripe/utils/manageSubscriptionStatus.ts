@@ -2,7 +2,7 @@ import { toDateTime } from '@/utils/helpers';
 import { stripe } from '@/components/(third-party)/stripe/utils/config';
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
-import type { Database, Tables, TablesInsert } from '../../../types_db';
+import type { Database, Tables, TablesInsert } from 'types_db';
 
 type Subscription = Tables<'subscriptions'>;
 

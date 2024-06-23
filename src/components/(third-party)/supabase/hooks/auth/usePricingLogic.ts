@@ -1,11 +1,11 @@
 // src/hooks/usePricingLogic.ts
 import { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { getStripe } from '@/utils/stripe/client';
-import { checkoutWithStripe } from '@/utils/stripe/server';
+import { getStripe } from '@/components/(third-party)/stripe/utils/client';
+import { checkoutWithStripe } from '@/components/(third-party)/stripe/utils/server';
 import { getErrorRedirect } from '@/utils/helpers';
 import { User } from '@supabase/supabase-js';
-import { Tables } from '../../../../types_db'; // Adjust the import path as necessary
+import { Tables } from 'types_db'; // Adjust the import path as necessary
 
 type Subscription = Tables<'subscriptions'>;
 type Price = Tables<'prices'>;

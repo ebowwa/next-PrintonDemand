@@ -1,9 +1,9 @@
 // src/components/(sections)/printondemand/result/ProcessedImageDetails/index.tsx
 // 
 import React, { useEffect, useState, useRef } from 'react';
-import { Header } from '@/components/(sections)/printondemand/result/Header';
+import { Header } from '@/components/(sections)/printondemand/Header';
 import { ImageTable } from '@/components/(sections)/printondemand/ImageTable';
-import { analyzeImage } from './api';
+import { analyzeImage } from '../api';
 import { fetchImagesFromIDB, clearImagesFromIDB } from "@/components/(sections)/printondemand/ImageTable/utils/database/idbOperations";
 
 interface AnalysisResult {
