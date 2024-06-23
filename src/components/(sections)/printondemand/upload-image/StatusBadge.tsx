@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageFileWithStatus } from "@/types/index";
+import { ImageFileWithStatus } from "./types";
 
 const StatusBadge: React.FC<{ status: ImageFileWithStatus['status'], errorMessage?: string }> = ({ status, errorMessage }) => {
   const statusColors = {

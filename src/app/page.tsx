@@ -1,8 +1,8 @@
 "use client";
 // app/homepage/page.tsx
-import TallyHeader from '@/components/(sections)/TallyHeader'; 
-import { LeftImageRightCopy } from '@/components/(sections)/LeftImageRightCopy';
-import TallyNavbar from '@/components/(sections)/TallyNavbar';
+import TallyHeader from '@/components/(sections)/landing/TallyHeader'; 
+import { LeftImageRightCopy } from '@/components/(sections)/landing/LeftImageRightCopy';
+import TallyNavbar from '@/components/(sections)/landing/TallyNavbar';
 
 export default function Homepage() {
   return (

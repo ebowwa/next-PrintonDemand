@@ -1,11 +1,8 @@
+// app/api/analyze-images/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { anthropic } from "@ai-sdk/anthropic";
-
-type SupportedImageTypes = "image/jpeg" | "image/png" | "image/gif" | "image/webp";
-
-function isSupportedImageType(type: string): type is SupportedImageTypes {
-  return ["image/jpeg", "image/png", "image/gif", "image/webp"].includes(type);
-}
+import { isSupportedImageType } from "./utils"
+import { PROMPT } from './prompt';
 
 export async function POST(req: NextRequest) {
   console.log("Entering POST function");
@@ -14,7 +11,10 @@ export async function POST(req: NextRequest) {
 
   try {
     const { prompt } = await req.json();
-    console.log(`Request ID: ${requestId} - Received prompt:`, prompt);
+
+    // Remove base64 string from the prompt before logging
+    const promptWithoutBase64 = prompt.replace(/^data:([A-Za-z-+\/]+);base64,(.+)$/, 'data:${1};base64,***base64_data***');
+    console.log(`Request ID: ${requestId} - Received prompt:`, promptWithoutBase64);
 
     if (prompt.length > 6_464_471) {
       console.log(`Request ID: ${requestId} - Image too large`);
@@ -22,7 +22,6 @@ export async function POST(req: NextRequest) {
     }
 
     const { mimeType, image } = decodeBase64Image(prompt);
-    console.log(`Request ID: ${requestId} - Decoded image data`);
 
     if (!mimeType || !image) {
       console.log(`Request ID: ${requestId} - Invalid image data`);
@@ -42,15 +41,15 @@ export async function POST(req: NextRequest) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20240620',
-        max_tokens: 1024,
+        model: 'claude-3-haiku-20240307',
+        max_tokens: 50,
         messages: [
           {
             role: 'user',
             content: [
               {
                 type: 'text',
-                text: 'Begin each of the following with a triangle symbol (▲ U+25B2): First, a brief description of the image to be used as alt text. Do not describe or extract text in the description. Second, the text extracted from the image, with newlines where applicable. Un-obstruct text if it is covered by something, to make it readable. If there is no text in the image, only respond with the description. Do not include any other information. Example: ▲ Lines of code in a text editor.▲ const x = 5; const y = 10; const z = x + y; console.log(z);',
+                text: PROMPT,
               },
               {
                 type: 'image',

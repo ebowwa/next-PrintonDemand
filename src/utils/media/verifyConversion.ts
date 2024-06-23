@@ -1,5 +1,5 @@
 // src/utils/verifyConversion.ts
-import { ImageFileWithStatus } from "@/types/index";
+import { ImageFileWithStatus } from "@/components/(sections)/printondemand/upload-image/types";
 
 export const verifyConversion = (imageFileWithStatus: ImageFileWithStatus, updateImageStatus: (index: number, status: ImageFileWithStatus['status'], errorMessage?: string) => void, index: number) => {
   if (!imageFileWithStatus.pngUrl) return;

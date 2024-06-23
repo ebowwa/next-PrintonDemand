@@ -8,17 +8,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import ImageStatusTable from '@/components/(sections)/printondemand/upload-image/ImageStatusTable';
 import NavigateWithConvertedImages from '@/components/(sections)/printondemand/upload-image/NavigateWithConvertedImages';
-import { verifyConversion } from '@/utils/verifyConversion';
+import { verifyConversion } from '@/utils/media/verifyConversion';
 import { convertImageToPNG } from '@/utils/media/convertImageToPNG';
-export interface ImageFileWithStatus {
-  file: File;
-  pngUrl?: string;
-  status: 'pending' | 'converted' | 'verifying' | 'error';
-  errorMessage?: string;
-  format: 'jpeg' | 'png' | 'jpg' | 'webp' | 'heic';
-  width?: number; // Add this line
-  height?: number; // Add this line
-}
+import { ImageFileWithStatus } from '@/components/(sections)/printondemand/upload-image/types';
+
 const fileSchema = z.object({
   file: z.instanceof(File).refine(file => ['image/webp', 'image/png'].includes(file.type), "The file must be a WebP or PNG image"),
 });

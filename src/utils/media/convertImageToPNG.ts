@@ -1,5 +1,6 @@
 // src/utils/convertImageToPNG.ts
-import { ImageFileWithStatus } from "@/types/index";
+import { ImageFileWithStatus } from '@/components/(sections)/printondemand/upload-image/types';
+
 
 export const convertImageToPNG = (image: HTMLImageElement, index: number, setImages: React.Dispatch<React.SetStateAction<ImageFileWithStatus[]>>, verifyConversionCallback: (imageFileWithStatus: ImageFileWithStatus, index: number) => void) => {
   const canvas = document.createElement('canvas');

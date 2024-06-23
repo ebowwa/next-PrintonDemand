@@ -1,4 +1,4 @@
-import { base64ToBlob } from '@/utils/storage/base64ToBlob';
+import { base64ToBlob } from '@/utils/media/base64';
 import { resizeImage } from '@/utils/media/resizeImage';
 import { MAX_IMAGE_SIZE } from '@/lib/constants';
 

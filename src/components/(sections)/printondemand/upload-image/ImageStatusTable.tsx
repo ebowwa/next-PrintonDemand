@@ -3,16 +3,8 @@ import React from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatusBadge from './StatusBadge';
 import Image from 'next/image';
+import { ImageFileWithStatus } from "./types";
 
-export interface ImageFileWithStatus {
-  file: File;
-  pngUrl?: string;
-  status: 'pending' | 'converted' | 'verifying' | 'error';
-  errorMessage?: string;
-  format: 'jpeg' | 'png' | 'jpg' | 'webp' | 'heic';
-  width?: number; // Add this line
-  height?: number; // Add this line
-}
 
 const ImageStatusTable: React.FC<{ images: ImageFileWithStatus[] }> = ({ images }) => {
   return (
