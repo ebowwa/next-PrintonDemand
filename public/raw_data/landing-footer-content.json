@@ -8,8 +8,6 @@
     { "label": "Home", "href": "/" },
     { "label": "About Us", "href": "/about" },
     { "label": "Why Us?", "href": "/our-promise" },
-    { "label": "Our Services", "href": "/services" },
-    { "label": "Portfolio", "href": "/portfolio" },
     { "label": "Testimonials", "href": "/testimonials" },
     { "label": "Blog", "href": "/blog" },
     { "label": "Careers", "href": "/careers" },
@@ -22,8 +20,7 @@
   "customerSupportLinks": [
     { "label": "Contact Us", "href": "/contact" },
     { "label": "FAQs", "href": "/faq" },
-    { "label": "Submit a Ticket", "href": "/support" },
-    { "label": "Live Chat", "href": "/chat" }
+    { "label": "Submit a Ticket", "href": "/support" }
   ],
   "communityLinks": [
     { "label": "Print On Demand", "href": "/printondemand" },
@@ -31,8 +28,8 @@
     { "label": "Community Involvement", "href": "/community" }
   ],
   "helpLinks": [
-    { "label": "Installation Guides", "href": "/guides" },
-    { "label": "Maintenance Tips", "href": "/maintenance" },
+    { "label": "Perplexity", "href": "/guides" },
+    { "label": "Need GPU Compute?", "href": "/maintenance" },
     { "label": "DIY Resources", "href": "/diy" }
   ]
 }

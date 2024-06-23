@@ -52,7 +52,7 @@ export function LandingFooter() {
                 Email: <Link href={`mailto:${email}`} className="font-medium">{email}</Link>
               </p>
               <p className="text-base leading-relaxed text-gray-500">
-                With ❤️ from : <span className="font-medium">{address}</span>
+                With ❤️ from: <span className="font-medium">{address}</span>
               </p>
             </div>
 
