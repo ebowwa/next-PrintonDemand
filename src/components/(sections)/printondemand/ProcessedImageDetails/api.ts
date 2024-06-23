@@ -1,5 +1,5 @@
 // src/components/(sections)/printondemand/result/ProcessedImageDetails/api.ts
-
+import { AnalysisResult } from "../types";
 /**
  * Converts a Blob object to a Base64 encoded string.
  * @param blob - The Blob object to convert.
@@ -19,7 +19,7 @@ export const blobToBase64 = (blob: Blob): Promise<string> => {
  * @param imageData - The image data, which can be a Base64 encoded string or a Blob URL.
  * @returns A Promise that resolves to an object containing the description and extracted text.
  */
-export const analyzeImage = async (imageData: string): Promise<{ description: string, extractedText: string }> => {
+export const analyzeImage = async (imageData: string): Promise<AnalysisResult> => {
   try {
     let base64Image = imageData;
 
@@ -49,14 +49,23 @@ export const analyzeImage = async (imageData: string): Promise<{ description: st
      * It separates the description and the extracted text in the response string.
      * By splitting the result using '▲', we can easily extract these two parts.
      */
-    const [description, extractedText] = result.split('▲').slice(1);
+    const [listing, brand, bulleta, bulletb, description] = result.split('▲').slice(1);
 
     return {
+      listing: listing?.trim() || 'No listing available',
+      brand: brand?.trim() || 'No brand available',
+      bulleta: bulleta?.trim() || 'No bullet A available',
+      bulletb: bulletb?.trim() || 'No bullet B available',
       description: description?.trim() || 'No description available',
-      extractedText: extractedText?.trim() || 'No text extracted'
     };
   } catch (error) {
     console.error('Error analyzing image:', error);
-    return { description: 'Analysis failed', extractedText: 'Error occurred' };
+    return {
+      listing: 'Analysis failed',
+      brand: 'Analysis failed',
+      bulleta: 'Analysis failed',
+      bulletb: 'Analysis failed',
+      description: 'Analysis failed',
+    };
   }
 };

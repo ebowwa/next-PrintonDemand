@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         model: 'claude-3-haiku-20240307',
-        max_tokens: 50,
+        max_tokens: 1000,
         messages: [
           {
             role: 'user',

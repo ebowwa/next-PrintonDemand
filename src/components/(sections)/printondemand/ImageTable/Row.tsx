@@ -7,17 +7,32 @@ import EllipsisButton from './EllipsisButton';
 interface ImageRowProps {
   id: number;
   base64Image: string;
-  productDetails: string;
-  reviewInfo: string;
-  dateInfo: string;
+  productListing: string;
+  brand: string;
+  featureBullet1: string;
+  featureBullet2: string;
+  productDescription: string;
 }
 
-const ProductDetails: React.FC<{ details: string }> = ({ details }) => {
-  return <div>{details}</div>;
+const ProductListing: React.FC<{ listing: string }> = ({ listing }) => {
+  return <div>{listing}</div>;
 };
 
-const ReviewInfo: React.FC<{ info: string }> = ({ info }) => {
-  return <div>{info}</div>;
+const Brand: React.FC<{ brand: string }> = ({ brand }) => {
+  return <div>{brand}</div>;
+};
+
+const FeatureBullets: React.FC<{ bullet1: string; bullet2: string }> = ({ bullet1, bullet2 }) => {
+  return (
+    <ul>
+      <li>{bullet1}</li>
+      <li>{bullet2}</li>
+    </ul>
+  );
+};
+
+const ProductDescription: React.FC<{ description: string }> = ({ description }) => {
+  return <div>{description}</div>;
 };
 
 interface ImageTableHeader {
@@ -29,18 +44,21 @@ interface ImageTableHeader {
 export const imageTableHeaders: ImageTableHeader[] = [
   { id: 'number', label: '#', className: 'w-10' },
   { id: 'image', label: 'Image' },
-  { id: 'brand', label:'Brand'},
-  { id: 'review', label: 'Review', className: 'hidden md:table-cell' },
-  { id: 'date', label: 'Date', className: 'hidden md:table-cell' },
+  { id: 'productListing', label: 'Product Listing' },
+  { id: 'brand', label: 'Brand' },
+  { id: 'features', label: 'Features', className: 'hidden md:table-cell' },
+  { id: 'description', label: 'Description', className: 'hidden lg:table-cell' },
   { id: 'actions', label: '', className: 'w-10' },
 ];
 
 export const ImageRow: React.FC<ImageRowProps> = ({
   id,
   base64Image,
-  productDetails,
-  reviewInfo,
-  dateInfo,
+  productListing,
+  brand,
+  featureBullet1,
+  featureBullet2,
+  productDescription,
 }) => {
   return (
     <TableRow>
@@ -49,13 +67,16 @@ export const ImageRow: React.FC<ImageRowProps> = ({
         <ImageCard base64Image={base64Image} index={id} />
       </TableCell>
       <TableCell>
-        <ProductDetails details={productDetails} />
+        <ProductListing listing={productListing} />
+      </TableCell>
+      <TableCell>
+        <Brand brand={brand} />
       </TableCell>
       <TableCell className="hidden md:table-cell">
-        <ReviewInfo info={reviewInfo} />
+        <FeatureBullets bullet1={featureBullet1} bullet2={featureBullet2} />
       </TableCell>
-      <TableCell className="hidden md:table-cell">{dateInfo}</TableCell>
-      <TableCell>
+      <TableCell className="hidden lg:table-cell">
+        <ProductDescription description={productDescription} />
         <EllipsisButton />
       </TableCell>
     </TableRow>

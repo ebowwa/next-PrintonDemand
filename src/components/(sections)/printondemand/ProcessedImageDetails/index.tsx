@@ -7,8 +7,12 @@ import { analyzeImage } from './api';
 import { fetchImagesFromIDB, clearImagesFromIDB } from "@/components/(sections)/printondemand/ImageTable/utils/database/idbOperations";
 
 interface AnalysisResult {
+  listing: string;
+  brand:string;
+  bulleta: string;
+  bulletb: string;
   description: string;
-  extractedText: string;
+  // extractedText: string;
 }
 
 interface ImageData {
