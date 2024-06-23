@@ -83,7 +83,7 @@ const TallyNavbar: React.FC = () => {
   return (
     <UserProvider>
       <nav className="flex justify-between items-center py-4 px-8 border-b">
-        <h1 className="text-2xl font-bold">alchemy</h1>
+        <Image src="/pixelcut-export-5.svg" alt="Logo" width={150} height={50} />
         <div className="flex items-center"> {/* Add this wrapper */}
           <Menu setActive={setActiveItem}>
             {/* Render menu items dynamically */}
@@ -108,7 +108,7 @@ const TallyNavbar: React.FC = () => {
               </MenuItem>
             ))}
           </Menu>
-          <AuthButtons /> {/* Move AuthButtons here */}
+          <AuthButtons /> 
         </div>
       </nav>
     </UserProvider>

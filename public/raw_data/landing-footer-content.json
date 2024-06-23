@@ -1,0 +1,38 @@
+{
+  "companyName": "Un-Automated",
+  "companyDescription": "Empowering individuals to turn their passions into income.",
+  "phone": "1-510-815-5767",
+  "email": "info@un-automated.com",
+  "address": "650 California St, Floor 7, San Francisco, CA",
+  "companyLinks": [
+    { "label": "Home", "href": "/" },
+    { "label": "About Us", "href": "/about" },
+    { "label": "Why Us?", "href": "/our-promise" },
+    { "label": "Our Services", "href": "/services" },
+    { "label": "Portfolio", "href": "/portfolio" },
+    { "label": "Testimonials", "href": "/testimonials" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Careers", "href": "/careers" },
+    { "label": "Privacy Policy", "href": "/privacy" }
+  ],
+  "plansAndPricingLinks": [
+    { "label": "Pricing", "href": "/pricing" },
+    { "label": "Commercial", "href": "/financing" }
+  ],
+  "customerSupportLinks": [
+    { "label": "Contact Us", "href": "/contact" },
+    { "label": "FAQs", "href": "/faq" },
+    { "label": "Submit a Ticket", "href": "/support" },
+    { "label": "Live Chat", "href": "/chat" }
+  ],
+  "communityLinks": [
+    { "label": "Print On Demand", "href": "/printondemand" },
+    { "label": "Resumes", "href": "/resume" },
+    { "label": "Community Involvement", "href": "/community" }
+  ],
+  "helpLinks": [
+    { "label": "Installation Guides", "href": "/guides" },
+    { "label": "Maintenance Tips", "href": "/maintenance" },
+    { "label": "DIY Resources", "href": "/diy" }
+  ]
+}
