@@ -17,6 +17,7 @@ import {
   ogType,
   robots,
 } from "@/lib/constants";
+import GoogleAnalytics from "@/components/(third-party)/GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +53,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );

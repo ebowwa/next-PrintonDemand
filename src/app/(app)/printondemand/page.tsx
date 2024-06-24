@@ -4,7 +4,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { useConvertedImageContext } from '@/utils/storage/context/ConvertedImageContext';
-import ProcessedImageDetails from '@/components/(sections)/printondemand/ProcessedImageDetails';
+import ProcessedImageDetails from '@/components/(sections)/printondemand';
 
 // Dynamically import the ConvertWebp2Png component with SSR disabled
 const ConvertWebp2Png = dynamic(() => import('@/components/(features)/images/ConvertWebp2Png'), {

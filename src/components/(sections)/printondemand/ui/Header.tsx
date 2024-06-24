@@ -1,7 +1,7 @@
 // components/Header.tsx
 
 // result header to the table so chevronlefticon and <h1> title could be renamed/refactored as page could use an actual header
-
+// add word art here
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronLeftIcon } from "@/components/ui/icons/system";

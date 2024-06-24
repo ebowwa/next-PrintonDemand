@@ -1,7 +1,7 @@
 // src/components/upload-image/NavigateWithConvertedImages.tsx
 import React from 'react';
 import { useConvertedImageContext } from '@/utils/storage/context/ConvertedImageContext';
-import { storeImagesInIDB } from '@/components/(sections)/printondemand/ImageTable/utils/database/idbOperations';
+import { storeImagesInIDB } from '@/components/(sections)/printondemand/ImageTable/database/idbOperations';
 
 interface Props {
   images: { pngUrl?: string }[];

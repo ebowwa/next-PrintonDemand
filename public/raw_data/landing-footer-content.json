@@ -7,29 +7,27 @@
   "companyLinks": [
     { "label": "Home", "href": "/" },
     { "label": "About Us", "href": "/about" },
-    { "label": "Why Us?", "href": "/our-promise" },
     { "label": "Testimonials", "href": "/testimonials" },
     { "label": "Blog", "href": "/blog" },
     { "label": "Careers", "href": "/careers" },
     { "label": "Privacy Policy", "href": "/privacy" }
   ],
   "plansAndPricingLinks": [
-    { "label": "Pricing", "href": "/pricing" },
-    { "label": "Commercial", "href": "/financing" }
+    { "label": "Pricing", "href": "/pricing" }
   ],
   "customerSupportLinks": [
     { "label": "Contact Us", "href": "/contact" },
     { "label": "FAQs", "href": "/faq" },
-    { "label": "Submit a Ticket", "href": "/support" }
+    { "label": "Submit a Ticket", "href": "#" }
   ],
   "communityLinks": [
     { "label": "Print On Demand", "href": "/printondemand" },
     { "label": "Resumes", "href": "/resume" },
-    { "label": "Community Involvement", "href": "/community" }
+    { "label": "Community Involvement", "href": "#" }
   ],
   "helpLinks": [
-    { "label": "Perplexity", "href": "/guides" },
-    { "label": "Need GPU Compute?", "href": "/maintenance" },
-    { "label": "DIY Resources", "href": "/diy" }
+    { "label": "Perplexity", "href": "#" },
+    { "label": "Need GPU Compute?", "href": "#" },
+    { "label": "DIY Resources", "href": "#" }
   ]
 }

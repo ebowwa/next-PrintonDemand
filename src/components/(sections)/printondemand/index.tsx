@@ -1,10 +1,10 @@
 // src/components/(sections)/printondemand/result/ProcessedImageDetails/index.tsx
 // 
 import React, { useEffect, useState, useRef } from 'react';
-import { Header } from '@/components/(sections)/printondemand/Header';
+import { Header } from '@/components/(sections)/printondemand/ui/Header';
 import { ImageTable } from '@/components/(sections)/printondemand/ImageTable';
-import { analyzeImage } from '../api';
-import { fetchImagesFromIDB, clearImagesFromIDB } from "@/components/(sections)/printondemand/ImageTable/utils/database/idbOperations";
+import { analyzeImage } from './api';
+import { fetchImagesFromIDB, clearImagesFromIDB } from "@/components/(sections)/printondemand/ImageTable/database/idbOperations";
 
 interface AnalysisResult {
   listing: string;
@@ -12,7 +12,6 @@ interface AnalysisResult {
   bulleta: string;
   bulletb: string;
   description: string;
-  // extractedText: string;
 }
 
 interface ImageData {
@@ -93,3 +92,6 @@ const ProcessedImageDetails = () => {
 };
 
 export default ProcessedImageDetails;
+
+// id like to remove the clear idb  on back button and maybe add an additional button to clear; my worry with removing the current clear on back button (in the header scrript) is wasting api requests as seemingly each image in the table gets sent to the api, id also like to save the results of inference on the images that is saved in the table to be saved overall alongside or related in some way tot he images saved to the idb
+// abstract out the clearImagesFromIDB to only handle the fetchImagesFromIDB & or an even more abstract function to make it easier as we utilize this iDB further or differenetly
