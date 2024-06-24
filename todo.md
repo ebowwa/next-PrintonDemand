@@ -1,0 +1,12 @@
+# components/Header.tsx
+// result header to the table so chevronlefticon and <h1> title could be renamed/refactored as page could use an actual header
+// add word art here
+
+# src/components/(sections)/printondemand/index.tsx
+// id like to remove the clear idb  on back button and maybe add an additional button to clear; my worry with removing the current clear on back button (in the header scrript) is wasting api requests as seemingly each image in the table gets sent to the api, id also like to save the results of inference on the images that is saved in the table to be saved overall alongside or related in some way tot he images saved to the idb
+// abstract out the clearImagesFromIDB to only handle the fetchImagesFromIDB & or an even more abstract function to make it easier as we utilize this iDB further or differenetly
+
+# check cell heirarchy
+src/components/(sections)/printondemand/ImageTable/kit/EllipsisButton.tsx
+
+# landing video
