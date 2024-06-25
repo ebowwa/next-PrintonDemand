@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Table, TableHead, TableRow, TableHeader, TableBody } from "@/components/ui/table";
-import { ImageRow, imageTableHeaders } from './Row';
-import { AnalysisResult, ImageTableProps } from '../types';
+import { ImageRow, imageTableHeaders } from '../Row';
+import { AnalysisResult, ImageTableProps } from '../../types';
 
 export const ImageTable: React.FC<ImageTableProps> = ({ images, analysisResults }) => {
   return (

@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import SettingsDropdown from '@/components/(sections)/printondemand/ImageTable/kit/SettingsDropdown'; // Adjust the import path as necessary
+import SettingsDropdown from '@/components/(sections)/printondemand/ui/SettingsDropdown'; // Adjust the import path as necessary
 
 const SettingsPage = () => {
   return (

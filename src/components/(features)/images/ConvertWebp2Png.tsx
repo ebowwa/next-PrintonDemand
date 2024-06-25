@@ -6,11 +6,11 @@ import React, { useState } from 'react';
 import { z } from 'zod';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import ImageStatusTable from '@/components/(sections)/printondemand/upload-image/ImageStatusTable';
-import NavigateWithConvertedImages from '@/components/(sections)/printondemand/upload-image/NavigateWithConvertedImages';
+import ImageStatusTable from '@/components/(sections)/printondemand/ui/upload-image/ImageStatusTable';
+import NavigateWithConvertedImages from '@/components/(sections)/printondemand/ui/upload-image/NavigateWithConvertedImages';
 import { verifyConversion } from '@/utils/media/verifyConversion';
 import { convertImageToPNG } from '@/utils/media/convertImageToPNG';
-import { ImageFileWithStatus } from '@/components/(sections)/printondemand/upload-image/types';
+import { ImageFileWithStatus } from '@/components/(sections)/printondemand/ui/upload-image/types';
 
 const fileSchema = z.object({
   file: z.instanceof(File).refine(file => ['image/webp', 'image/png'].includes(file.type), "The file must be a WebP or PNG image"),

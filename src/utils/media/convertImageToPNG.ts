@@ -1,5 +1,5 @@
 // src/utils/convertImageToPNG.ts
-import { ImageFileWithStatus } from '@/components/(sections)/printondemand/upload-image/types';
+import { ImageFileWithStatus } from '@/components/(sections)/printondemand/ui/upload-image/types';
 
 
 export const convertImageToPNG = (image: HTMLImageElement, index: number, setImages: React.Dispatch<React.SetStateAction<ImageFileWithStatus[]>>, verifyConversionCallback: (imageFileWithStatus: ImageFileWithStatus, index: number) => void) => {

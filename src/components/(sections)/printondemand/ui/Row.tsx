@@ -2,7 +2,7 @@
 import React from 'react';
 import { TableRow, TableCell } from "@/components/ui/table";
 import { ImageCard } from './ImageCard';
-import EllipsisButton from './kit/EllipsisButton';
+import EllipsisButton from './EllipsisButton';
 
 interface ImageRowProps {
   id: number;

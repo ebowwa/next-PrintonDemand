@@ -1,7 +1,7 @@
 // src/hooks/useImagesFromIDB.ts
 
 import { useEffect, useState } from "react";
-import { fetchImagesFromIDB, clearImagesFromIDB } from "@/components/(sections)/printondemand/ImageTable/database/idbOperations";
+import { fetchImagesFromIDB, clearImagesFromIDB } from "@/components/(sections)/printondemand/database/idbOperations";
 
 const useImagesFromIDB = () => {
   const [images, setImages] = useState<string[]>([]);
