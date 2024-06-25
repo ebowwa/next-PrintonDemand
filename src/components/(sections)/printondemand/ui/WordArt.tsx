@@ -1,9 +1,10 @@
-// src/components/(sections)/printondemand/ImageTable/kit/WordArt.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
 
 const fonts = [
   'Arial', 'Verdana', 'Times New Roman', 'Courier', 'Georgia',
@@ -11,65 +12,19 @@ const fonts = [
   'Arial Black', 'Impact'
 ];
 
-const WordArtCustomizer: React.FC<{
-  selectedText: string;
-  font: string;
-  fontSize: number;
-  onFontChange: (font: string) => void;
-  onFontSizeChange: (size: number) => void;
-  onDownload: () => void;
-}> = ({ selectedText, font, fontSize, onFontChange, onFontSizeChange, onDownload }) => {
-  return (
-    <Card>
-      <CardContent className="p-6">
-        <div className="flex flex-col space-y-4 mb-4">
-          <Select onValueChange={onFontChange} value={font}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select font" />
-            </SelectTrigger>
-            <SelectContent>
-              {fonts.map((f) => (
-                <SelectItem key={f} value={f}>{f}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          
-          <div className="space-y-2">
-            <Slider
-              min={12}
-              max={72}
-              step={1}
-              value={[fontSize]}
-              onValueChange={(value: number[]) => onFontSizeChange(value[0])}
-            />
-            <div className="text-center">{fontSize}px</div>
-          </div>
-        </div>
-        
-        <Button onClick={onDownload} disabled={!selectedText} className="w-full">
-          Download as PNG
-        </Button>
-      </CardContent>
-    </Card>
-  );
-};
-
 const WordArtDisplay: React.FC<{
   text: string;
   font: string;
   fontSize: number;
-}> = ({ text, font, fontSize }) => {
+  color: string;
+}> = ({ text, font, fontSize, color }) => {
   return (
-    <Card className="my-4">
-      <CardContent>
-        <div
-          className="text-center p-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text"
-          style={{ fontFamily: font, fontSize: `${fontSize}px` }}
-        >
-          {text || "Select any text on the page to see word art"}
-        </div>
-      </CardContent>
-    </Card>
+    <div
+      className="text-center p-4 mb-4"
+      style={{ fontFamily: font, fontSize: `${fontSize}px`, color: color }}
+    >
+      {text || "Select any text on the page to see word art"}
+    </div>
   );
 };
 
@@ -77,6 +32,8 @@ const WordArtComponent: React.FC = () => {
   const [selectedText, setSelectedText] = useState('');
   const [wordArtFont, setWordArtFont] = useState(fonts[0]);
   const [fontSize, setFontSize] = useState(48);
+  const [color, setColor] = useState('#FF00FF'); // Default color: magenta
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const wordArtRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -84,6 +41,7 @@ const WordArtComponent: React.FC = () => {
       const selection = window.getSelection();
       if (selection && selection.toString().trim() !== '') {
         setSelectedText(selection.toString().trim());
+        setIsModalOpen(true);
       }
     };
 
@@ -103,14 +61,9 @@ const WordArtComponent: React.FC = () => {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         ctx.font = `${fontSize * 3}px ${wordArtFont}`;
+        ctx.fillStyle = color;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-        gradient.addColorStop(0, 'purple');
-        gradient.addColorStop(0.5, 'pink');
-        gradient.addColorStop(1, 'red');
-        ctx.fillStyle = gradient;
         
         ctx.fillText(selectedText, canvas.width / 2, canvas.height / 2);
         
@@ -123,16 +76,59 @@ const WordArtComponent: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto" ref={wordArtRef}>
-      <WordArtDisplay text={selectedText} font={wordArtFont} fontSize={fontSize} />
-      <WordArtCustomizer
-        selectedText={selectedText}
-        font={wordArtFont}
-        fontSize={fontSize}
-        onFontChange={setWordArtFont}
-        onFontSizeChange={setFontSize}
-        onDownload={handleDownload}
-      />
+    <div className="w-full max-w-2xl mx-auto">
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <div ref={wordArtRef}>
+            <WordArtDisplay text={selectedText} font={wordArtFont} fontSize={fontSize} color={color} />
+          </div>
+          
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="font-select">Font</Label>
+              <Select onValueChange={setWordArtFont} value={wordArtFont}>
+                <SelectTrigger id="font-select">
+                  <SelectValue placeholder="Select font" />
+                </SelectTrigger>
+                <SelectContent>
+                  {fonts.map((f) => (
+                    <SelectItem key={f} value={f}>{f}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="font-size">Font Size: {fontSize}px</Label>
+              <Slider
+                id="font-size"
+                min={12}
+                max={72}
+                step={1}
+                value={[fontSize]}
+                onValueChange={(value: number[]) => setFontSize(value[0])}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="color-select">Color</Label>
+              <Input
+                id="color-select"
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                className="h-10 p-1"
+              />
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button onClick={handleDownload} className="w-full mt-4">
+              Download as PNG
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
