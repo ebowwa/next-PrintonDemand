@@ -1,5 +1,6 @@
 "use client";
 // app/homepage/page.tsx
+// i like the https://www.heygen.com/ landing page
 import TallyHeader from '@/components/(sections)/landing/Header'; 
 import { LeftImageRightCopy } from '@/components/(sections)/landing/LeftImageRightCopy';
 import TallyNavbar from '@/components/(sections)/landing/Navbar';

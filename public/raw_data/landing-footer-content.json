@@ -10,6 +10,9 @@
     { "label": "Testimonials", "href": "/testimonials" },
     { "label": "Blog", "href": "/blog" },
     { "label": "Careers", "href": "/careers" },
+    { "label": "Ethics", "href": "/ethics" },
+    { "label": "Cookie Preference", "href": "/careers" },
+
     { "label": "Privacy Policy", "href": "/privacy" }
   ],
   "plansAndPricingLinks": [

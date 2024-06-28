@@ -19,7 +19,7 @@ interface FooterLink {
   label: string;
   href: string;
 }
-
+// add `Use Cases`, features, resource, company
 export function LandingFooter() {
   const {
     companyName,
