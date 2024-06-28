@@ -1,0 +1,48 @@
+{
+    "name": "Elijah Arbee",
+    "contact_info": {
+        "email": "ec.arbee1@gmail.com",
+        "phone": "(510) 946-9214",
+        "linkedin": "https://www.linkedin.com/in/elijah-arbee/"
+    },
+    "summary": "Highly motivated and results-driven technologist seeking a Sales Development Representative role at Roboflow to leverage my passion for AI and computer vision to drive impactful growth.  Self-taught programmer with a strong foundation in Python, TypeScript, and Next.js, eager to contribute to a team pushing the boundaries of AI.  Demonstrated adaptability and resilience in navigating diverse work environments and overcoming challenges with a positive and proactive approach.",
+    "experiences": [
+        {
+            "title": "Operator",
+            "company": "Autonomy Solutions",
+            "dates": "Nov. 2021 - 2023",
+            "description": "Led a solar sales dealership, securing $2 million in contracts through strategic partnerships, tailored financial product offerings, and personalized sales techniques.  Effectively communicated value propositions and negotiated win-win agreements with clients. Consistently exceeded sales targets and demonstrated a strong understanding of the energy sector."
+        },
+        {
+            "title": "Outside Sales Manager",
+            "company": "All1 Marketing",
+            "dates": "Nov. 2020 - Oct. 2021",
+            "description": "Spearheaded door-to-door sales initiatives, blending traditional methods with modern insights to cultivate new business opportunities.  Developed and implemented effective sales strategies that drove revenue growth and exceeded sales goals.  Mentored and motivated a team of sales representatives, fostering a collaborative environment that maximized performance."
+        },
+        {
+            "title": "Hospitality Specialist",
+            "company": "Hospitality Industry",
+            "dates": "2017 - 2020",
+            "description": "Demonstrated versatility and adaptability in various roles within the hospitality industry, including Catering Serving, Food Runner, and Busser.  Developed strong customer service skills, ensuring exceptional service delivery while maintaining adherence to strict health and safety protocols.  Successfully managed diverse teams in fast-paced environments, fostering a collaborative culture that prioritized customer satisfaction and operational efficiency."
+        }
+    ],
+    "skills": {
+        "technical_skills": "Python, TypeScript, Next.js, AI, Machine Learning, Data Curation, Large Language Models (LLMs)",
+        "sales_and_marketing_strategy": "Full-cycle sales operations from lead generation to closing deals, identifying market trends and strategy.",
+        "relationship_building": "Rapport building, developing long-term relationships, and fostering mutually beneficial partnerships with clients and stakeholders.",
+        "communication_and_negotiation": "Approachable, outspoken, confident in negotiating win-win outcomes and securing agreements.",
+        "teamwork_and_collaboration": "Optimistic, synergistic, inclusive, empathetic, supportive.",
+        "adaptability_and_resilience": "Quick to adapt, resilient in the face of setbacks, and .",
+        "customer_service_excellence": "Proven ability to provide exceptional customer service, exceeding expectations and fostering positive relationships."
+    },
+    "education": [
+        {
+            "institution": "San Francisco State University",
+            "degree": "Political Science"
+        },
+        {
+            "institution": "Buildspace",
+            "description": "Engaged in hands-on development of GSM hardware solutions, blending technological expertise with practical application."
+        }
+    ]
+}
