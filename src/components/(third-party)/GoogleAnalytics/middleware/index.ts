@@ -1,4 +1,10 @@
-// middleware/analytics.ts
+// middleware/index.ts
+/**
+ * 
+ Server-Side Client ID Management: If you want to ensure that each user has a unique identifier for tracking purposes, this middleware snippet is crucial. It manages the _ga cookie to maintain a consistent client ID across user sessions.
+
+Enhanced Security and Control: By setting the Content Security Policy headers, you can control which scripts are allowed to run on your site, enhancing security.
+ */
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import crypto from 'crypto';

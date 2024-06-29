@@ -17,7 +17,7 @@ import {
   ogType,
   robots,
 } from "@/lib/constants";
-import GoogleAnalytics from "@/components/(third-party)/GoogleAnalytics";
+import GoogleAnalytics from "@/components/(third-party)/GoogleAnalytics/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
