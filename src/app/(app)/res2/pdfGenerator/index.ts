@@ -24,7 +24,7 @@ export const generatePDF = (data: ResumeData): string => {
   const contactInfo = `${data.contact_info.email} | ${data.contact_info.phone} | ${data.contact_info.linkedin}`;
   doc.text(contactInfo, 105, 30, { align: 'center' });
 
-  yPos = 45;
+  yPos = 35;
 
   // Summary
   yPos = addSectionHeader(doc, 'Professional Summary', yPos);
