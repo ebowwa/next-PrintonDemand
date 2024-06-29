@@ -14,17 +14,7 @@ export interface AIAssistedProps {
   }
 
 export interface JsonEditorProps {
-    initialData: ResumeData;
-    onUpdate: (data: ResumeData) => void;
+    value: ResumeData;
+    onChange: (updatedData: ResumeData) => void;
   }
 
-// ParsedResume.ts
-
-export interface ParsedResume {
-    name: string;
-    contact_info: ContactInfo; // Changed to ContactInfo
-    summary: string;
-    experiences: Experience[]; // Changed to Experience[]
-    education: Education[]; // Changed to Education[]
-    skills: { [key: string]: string }; // Changed to object
-  }

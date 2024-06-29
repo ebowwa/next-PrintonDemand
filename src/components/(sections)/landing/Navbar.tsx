@@ -86,7 +86,8 @@ const TallyNavbar: React.FC = () => {
   return (
     <UserProvider>
       <nav className="flex justify-between items-center py-4 px-4 md:px-8 border-b">
-      <Image src="https://raw.githubusercontent.com/ebowwa/next-PrintonDemand/main/public/pixelcut-export-5.svg" alt="Logo" width={150} height={50} />        <div className="hidden md:flex items-center">
+      <Image src="https://cdn.jsdelivr.net/gh/ebowwar/asset-store@main/un-automated/pixelcut-export-5.svg" alt="Logo" width={150} height={50} />        
+      <div className="hidden md:flex items-center">
           <Menu setActive={setActiveItem}>
             {Object.entries(menuItemsContent).map(([key, content]) => (
               <MenuItem key={key} setActive={setActiveItem} active={activeItem} item={content.title}>

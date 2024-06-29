@@ -2,19 +2,9 @@
 import React from 'react';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import { SummaryRenderer, ExperienceRenderer, SkillsRenderer, EducationRenderer } from '../pdfGenerator/contentRender';
-import { Experience, Education, Skills } from '../types';
-import { colors } from '../pdfGenerator/utils';
-
-interface ResumeData {
-  name: string;
-  email: string;
-  phone: string;
-  summary: string;
-  experience: Experience[];
-  education: Education[];
-  skills: Record<string, string>;
-}
+import { SummaryRenderer, ExperienceRenderer, SkillsRenderer, EducationRenderer } from '../PDFGenerator/contentRender';
+import { ResumeData } from '../types';
+import { colors } from '../PDFGenerator/utils';
 
 const PDFDocument: React.FC<{ resume: ResumeData }> = ({ resume }) => {
   const generatePDF = () => {
@@ -31,7 +21,7 @@ const PDFDocument: React.FC<{ resume: ResumeData }> = ({ resume }) => {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     doc.setTextColor(colors.text[0], colors.text[1], colors.text[2]);
-    doc.text(`${resume.email} | ${resume.phone}`, 10, yPos);
+    doc.text(`${resume.contact_info.email} | ${resume.contact_info.phone}`, 10, yPos);
     yPos += 15;
 
     // Summary
@@ -53,7 +43,7 @@ const PDFDocument: React.FC<{ resume: ResumeData }> = ({ resume }) => {
     yPos += 10;
 
     const experienceRenderer = new ExperienceRenderer();
-    yPos = experienceRenderer.render(doc, resume.experience, yPos);
+    yPos = experienceRenderer.render(doc, resume.experiences, yPos);
     yPos += 10;
 
     // Education
