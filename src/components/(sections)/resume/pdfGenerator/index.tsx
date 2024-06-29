@@ -4,7 +4,7 @@ import 'jspdf-autotable';
 import { ResumeData } from '../types';
 import { addSectionHeader } from './sectionHeaders';
 import { SummaryRenderer, ExperienceRenderer, SkillsRenderer, EducationRenderer } from './contentRender';
-import { colors } from './utils';
+import { colors } from '@/components/(sections)/resume/PDFGenerator/utils';
 import { addInvisibleText } from './invisibleText';
 
 export const generatePDF = (data: ResumeData): string => {
