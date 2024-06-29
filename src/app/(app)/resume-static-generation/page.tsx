@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ResumeData } from '@/components/(sections)/resume/types';
-import { generatePDF } from '@/components/(sections)/resume/PDFGenerator/generatePDF';
+import { generatePDF } from '@/components/(sections)/resume/pdfGenerator/generatePDF';
 
 const ResumePDF: React.FC = () => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);

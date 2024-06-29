@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { generatePDF } from '../PDFGenerator/generatePDF'; // Adjust the import path as necessary
+import { generatePDF } from '../pdfGenerator/generatePDF'; // Adjust the import path as necessary
 
 const JsonEditor: React.FC = () => {
   const [jsonData, setJsonData] = useState<string>('');

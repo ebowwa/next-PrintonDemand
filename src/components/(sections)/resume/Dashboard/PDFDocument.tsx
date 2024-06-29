@@ -3,9 +3,9 @@
 import React from 'react';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import { SummaryRenderer, ExperienceRenderer, SkillsRenderer, EducationRenderer } from '@/components/(sections)/resume/PDFGenerator/contentRender';
+import { SummaryRenderer, ExperienceRenderer, SkillsRenderer, EducationRenderer } from '@/components/(sections)/resume/pdfGenerator/contentRender';
 import { ResumeData } from '@/components/(sections)/resume/types';
-import { colors } from '@/components/(sections)/resume/PDFGenerator/utils';
+import { colors } from '@/components/(sections)/resume/pdfGenerator/utils';
 //src/components/(sections)/resume/Dashboard/PDFDocument.tsx
 const PDFDocument: React.FC<{ resume: ResumeData }> = ({ resume }) => {
   const generatePDF = () => {
