@@ -1,8 +1,8 @@
-// contentRenderer.ts
+// contentRender.ts
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 import { Experience, Education, Skills } from '../types';
-import { colors } from '../pdfGenerator/utils';
+import { colors } from './utils';
 
 abstract class ContentRenderer {
   abstract render(doc: jsPDF, data: any, yPos: number): number;

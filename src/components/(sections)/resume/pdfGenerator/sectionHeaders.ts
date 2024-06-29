@@ -1,6 +1,6 @@
 // sectionHeaders.ts
 import { jsPDF } from 'jspdf'; // Importing jsPDF library for generating PDF documents
-import { colors } from '../pdfGenerator/utils'; // Importing color utility for consistent styling
+import { colors } from './utils'; // Importing color utility for consistent styling
 
 // Function to add a section header to the PDF document
 // Parameters:

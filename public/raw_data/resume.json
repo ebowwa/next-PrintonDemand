@@ -5,43 +5,38 @@
         "phone": "(510) 946-9214",
         "linkedin": "https://www.linkedin.com/in/elijah-arbee/"
     },
-    "summary": "Highly motivated and results-driven technologist seeking a Sales Development Representative role at Roboflow to leverage my passion for AI and computer vision to drive impactful growth.  Self-taught programmer with a strong foundation in Python, TypeScript, and Next.js, eager to contribute to a team pushing the boundaries of AI.  Demonstrated adaptability and resilience in navigating diverse work environments and overcoming challenges with a positive and proactive approach.",
+    "summary": "Highly motivated and adaptable individual with a passion for technology and a drive to deliver exceptional customer experiences. Proven ability to master new skills quickly, build rapport with diverse individuals, and thrive in fast-paced environments. Eager to leverage technical skills and customer service expertise to contribute to a positive and efficient banking environment.",
     "experiences": [
-        {
-            "title": "Operator",
-            "company": "Autonomy Solutions",
-            "dates": "Nov. 2021 - 2023",
-            "description": "Led a solar sales dealership, securing $2 million in contracts through strategic partnerships, tailored financial product offerings, and personalized sales techniques.  Effectively communicated value propositions and negotiated win-win agreements with clients. Consistently exceeded sales targets and demonstrated a strong understanding of the energy sector."
-        },
-        {
-            "title": "Outside Sales Manager",
-            "company": "All1 Marketing",
-            "dates": "Nov. 2020 - Oct. 2021",
-            "description": "Spearheaded door-to-door sales initiatives, blending traditional methods with modern insights to cultivate new business opportunities.  Developed and implemented effective sales strategies that drove revenue growth and exceeded sales goals.  Mentored and motivated a team of sales representatives, fostering a collaborative environment that maximized performance."
-        },
-        {
-            "title": "Hospitality Specialist",
-            "company": "Hospitality Industry",
-            "dates": "2017 - 2020",
-            "description": "Demonstrated versatility and adaptability in various roles within the hospitality industry, including Catering Serving, Food Runner, and Busser.  Developed strong customer service skills, ensuring exceptional service delivery while maintaining adherence to strict health and safety protocols.  Successfully managed diverse teams in fast-paced environments, fostering a collaborative culture that prioritized customer satisfaction and operational efficiency."
-        }
+      {
+        "title": "Operator",
+        "company": "Autonomy Solutions",
+        "dates": "Nov. 2021 – 2023",
+        "description": "Spearheaded a solar sales dealership, leading door-to-door sales initiatives and securing over $2 million in contracts. Cultivated strategic partnerships with EPC firms and provided comprehensive client education on solar energy solutions. Navigated complex financial products and tailored procurement strategies to drive business growth and customer satisfaction."
+      },
+      {
+        "title": "Outside Sales Manager",
+        "company": "All1 Marketing",
+        "dates": "Nov. 2020 – Oct. 2021",
+        "description": "Drove revenue growth through strategic door-to-door sales initiatives, blending traditional techniques with data-driven insights. Cultivated a team-oriented environment, empowering sales representatives through mentorship and collaborative strategies to exceed targets."
+      },
+      {
+        "title": "Hospitality Specialist",
+        "company": "Hospitality Industry",
+        "dates": "2017 – 2020",
+        "description": "Excelled in fast-paced hospitality roles, ensuring exemplary customer service while adhering to strict health and safety protocols. Demonstrated adaptability and teamwork by thriving in diverse positions, including Catering Server, Food Runner, and Busser."
+      }
     ],
     "skills": {
-        "technical_skills": "Python, TypeScript, Next.js, AI, Machine Learning, Data Curation, Large Language Models (LLMs)",
-        "sales_and_marketing_strategy": "Full-cycle sales operations from lead generation to closing deals, identifying market trends and strategy.",
-        "relationship_building": "Rapport building, developing long-term relationships, and fostering mutually beneficial partnerships with clients and stakeholders.",
-        "communication_and_negotiation": "Approachable, outspoken, confident in negotiating win-win outcomes and securing agreements.",
-        "teamwork_and_collaboration": "Optimistic, synergistic, inclusive, empathetic, supportive.",
-        "customer_service_excellence": "Proven ability to provide exceptional customer service, exceeding expectations and fostering positive relationships."
+      "customer_engagement": " Proven ability to build rapport, understand needs, and deliver exceptional customer experiences.",
+      "sales_and_marketing": " Skilled in identifying customer needs, presenting solutions, and closing deals effectively.",
+      "teamwork_and_collaboration": "Experienced in working collaboratively, fostering team spirit, and contributing to shared goals.",
+      "adaptability_and_learning": " Quickly grasp new concepts, master new skills, and thrive in dynamic environments.",
+      "technology_proficiency": " Proficient in using various software and technologies, eager to learn new tools."
     },
     "education": [
-        {
-            "institution": "San Francisco State University",
-            "degree": "Political Science"
-        },
-        {
-            "institution": "Buildspace",
-            "description": "Engaged in hands-on development of GSM hardware solutions, blending technological expertise with practical application."
-        }
+      {
+        "institution": "San Francisco State University",
+        "degree": "Political Science"
+      }
     ]
-}
+  }
