@@ -3,7 +3,7 @@ import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ResumeData } from '../types';
+import { ResumeData } from '@/components/(sections)/resume/types';
 
 interface FormFieldsProps {
   resume: ResumeData;

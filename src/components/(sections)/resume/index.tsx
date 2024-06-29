@@ -5,10 +5,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import dynamic from 'next/dynamic';
 // import JsonEditor from './JsonEditor';
-import FormFields from './Dashboard/FormFields';
-import AIAssisted from './Dashboard/AIAssistedTab';
-import PDFDocument from './Dashboard/PDFDocument';
-import generateResumeWithLLM from './Dashboard/Assistant';
+import FormFields from '@/components/(sections)/resume/Dashboard/FormFields';
+import AIAssisted from '@/components/(sections)/resume/Dashboard/AIAssistedTab';
+import PDFDocument from '@/components/(sections)/resume/Dashboard/PDFDocument';
+import generateResumeWithLLM from '@/components/(sections)/resume/Dashboard/Assistant';
 import { ResumeData } from './types';
 // import JsonEditorProps from './Dashboard/types';
 
