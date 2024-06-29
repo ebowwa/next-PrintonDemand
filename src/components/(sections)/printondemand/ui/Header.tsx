@@ -2,7 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import { ChevronLeftIcon } from "@/components/ui/icons/system";
-import WordArtComponent from '@/components/(sections)/printondemand/ui/WordArt';
+import WordArtComponent from '@/components/(features)/WordArt';
 
 interface HeaderProps {
   title: string;

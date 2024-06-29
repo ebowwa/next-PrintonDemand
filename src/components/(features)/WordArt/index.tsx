@@ -1,3 +1,4 @@
+// @/components/(features)/WordArt/index.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
@@ -5,12 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogFooter } from "@/components/ui/dialog";
-
-const fonts = [
-  'Arial', 'Verdana', 'Times New Roman', 'Courier', 'Georgia',
-  'Palatino', 'Garamond', 'Bookman', 'Comic Sans MS', 'Trebuchet MS',
-  'Arial Black', 'Impact'
-];
+import { fonts } from "./fonts";
 
 const WordArtDisplay: React.FC<{
   text: string;
@@ -28,11 +24,12 @@ const WordArtDisplay: React.FC<{
   );
 };
 
-const WordArtComponent: React.FC = () => {
+const WordArt: React.FC = () => {
   const [selectedText, setSelectedText] = useState('');
   const [wordArtFont, setWordArtFont] = useState(fonts[0]);
   const [fontSize, setFontSize] = useState(48);
   const [color, setColor] = useState('#FF00FF'); // Default color: magenta
+  const [backgroundColor, setBackgroundColor] = useState('transparent');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const wordArtRef = useRef<HTMLDivElement>(null);
 
@@ -57,7 +54,7 @@ const WordArtComponent: React.FC = () => {
       const ctx = canvas.getContext('2d');
       
       if (ctx) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = backgroundColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         ctx.font = `${fontSize * 3}px ${wordArtFont}`;
@@ -120,6 +117,23 @@ const WordArtComponent: React.FC = () => {
                 className="h-10 p-1"
               />
             </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="background-color-select">Background Color</Label>
+              <Select onValueChange={setBackgroundColor} value={backgroundColor}>
+                <SelectTrigger id="background-color-select">
+                  <SelectValue placeholder="Select background color" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="transparent">Transparent</SelectItem>
+                  <SelectItem value="white">White</SelectItem>
+                  <SelectItem value="black">Black</SelectItem>
+                  <SelectItem value="#FF00FF">Magenta</SelectItem>
+                  <SelectItem value="#00FF00">Green</SelectItem>
+                  <SelectItem value="#0000FF">Blue</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           <DialogFooter>
@@ -133,4 +147,4 @@ const WordArtComponent: React.FC = () => {
   );
 };
 
-export default WordArtComponent;
+export default WordArt;
