@@ -16,7 +16,7 @@ const parseGeneratedResume = (data: any): ResumeData => {
   return data as ResumeData;
 };
 
-const JsonEditor = dynamic(() => import('./JsonEditor'), { ssr: false });
+const JsonEditor = dynamic(() => import('./jsonEditor'), { ssr: false });
 
 const ResumeGenerator: React.FC = () => {
   const [manualResume, setManualResume] = useState<ResumeData>({
