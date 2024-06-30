@@ -28,8 +28,8 @@ const JsonEditor: React.FC = () => {
         newData[field][index][subField as keyof Education] = value;
       } else if (field === 'contact_info' && subField) {
         newData[field][subField as keyof ContactInfo] = value;
-      } else {
-        newData[field as keyof ResumeData] = value;
+      } else if (field in newData) {
+        (newData as any)[field] = value;
       }
       return newData;
     });
