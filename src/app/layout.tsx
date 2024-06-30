@@ -17,7 +17,7 @@ import {
   ogType,
   robots,
 } from "@/lib/constants";
-import GoogleAnalytics from "@/components/(third-party)/GoogleAnalytics/client";
+import GoogleAnalytics from "@/components/(third-party)/Google/Analytics/client";
 import { NoScript } from "./(meta)/no-script"; // Corrected path
 import { Providers } from "@/utils/storage/provider/theme"; // Corrected path
 

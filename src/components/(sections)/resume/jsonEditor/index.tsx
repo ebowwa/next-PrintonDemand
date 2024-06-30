@@ -1,4 +1,3 @@
-// @/components/(sections)/resume/jsonEditor/index.tsx
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -8,8 +7,13 @@ import { Button } from "@/components/ui/button";
 import { generatePDF } from '../pdfGenerator/generatePDF'; // Adjust the import path as necessary
 import { ResumeData } from '../types';
 
-const JsonEditor: React.FC = () => {
-  const [jsonData, setJsonData] = useState<string>('');
+interface JsonEditorProps {
+  value: string;
+  onChange: (value: string) => void;
+}
+
+const JsonEditor: React.FC<JsonEditorProps> = ({ value, onChange }) => {
+  const [jsonData, setJsonData] = useState<string>(value);
   const [resumeData, setResumeData] = useState<ResumeData | null>(null);
 
   useEffect(() => {
@@ -18,9 +22,10 @@ const JsonEditor: React.FC = () => {
       .then(data => {
         setResumeData(data);
         setJsonData(JSON.stringify(data, null, 2));
+        onChange(JSON.stringify(data, null, 2));
       })
       .catch(error => console.error('Error loading resume data:', error));
-  }, []);
+  }, [onChange]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -29,12 +34,7 @@ const JsonEditor: React.FC = () => {
       reader.onload = (e) => {
         const content = e.target?.result as string;
         setJsonData(content);
-        try {
-          const parsedData = JSON.parse(content);
-          setResumeData(parsedData);
-        } catch (error) {
-          console.error('Invalid JSON:', error);
-        }
+        onChange(content);
       };
       reader.readAsText(file);
     }
@@ -75,12 +75,7 @@ const JsonEditor: React.FC = () => {
             value={jsonData}
             onChange={(e) => {
               setJsonData(e.target.value);
-              try {
-                const parsedData = JSON.parse(e.target.value);
-                setResumeData(parsedData);
-              } catch (error) {
-                console.error('Invalid JSON:', error);
-              }
+              onChange(e.target.value);
             }}
           />
         </div>
