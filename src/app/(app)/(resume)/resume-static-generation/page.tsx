@@ -1,5 +1,7 @@
 // ResumePDF.tsx
 'use client';
+// just shows what is stored as current json 
+// updated with r-edit
 
 import React, { useState, useEffect } from 'react';
 import { ResumeData } from '@/components/(sections)/resume/types';

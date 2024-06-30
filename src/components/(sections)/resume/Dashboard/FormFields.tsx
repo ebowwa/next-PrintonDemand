@@ -1,78 +1,102 @@
-// File Path: @/components/(sections)/resume/FormFields.tsx
-import React from 'react';
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+// @/components/(sections)/resume/jsonEditor/index.tsx
+import React, { useState, useEffect } from 'react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { ResumeData } from '@/components/(sections)/resume/types';
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { generatePDF } from '../pdfGenerator/generatePDF'; // Adjust the import path as necessary
+import { ResumeData, ContactInfo, Experience, Education } from '../types';
 
-interface FormFieldsProps {
-  resume: ResumeData;
-  onChange: (updatedResume: Partial<ResumeData>) => void;
-}
+const JsonEditor: React.FC = () => {
+  const [resumeData, setResumeData] = useState<ResumeData | null>(null);
 
-const FormFields: React.FC<FormFieldsProps> = ({ resume, onChange }) => {
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    if (name in resume.contact_info) {
-      onChange({
-        contact_info: { ...resume.contact_info, [name]: value }
-      });
-    } else {
-      onChange({ [name]: value });
-    }
+  useEffect(() => {
+    fetch('/raw_data/resume.json')
+      .then(response => response.json())
+      .then(data => setResumeData(data))
+      .catch(error => console.error('Error loading resume data:', error));
+  }, []);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, field: string, index?: number, subField?: string) => {
+    const { value } = event.target;
+    setResumeData(prevData => {
+      if (!prevData) return null;
+      const newData = { ...prevData };
+      if (field === 'experiences' && typeof index === 'number') {
+        newData[field][index][subField as keyof Experience] = value;
+      } else if (field === 'education' && typeof index === 'number') {
+        newData[field][index][subField as keyof Education] = value;
+      } else if (field === 'contact_info' && subField) {
+        newData[field][subField as keyof ContactInfo] = value;
+      } else {
+        newData[field as keyof ResumeData] = value;
+      }
+      return newData;
+    });
   };
 
+  const handleSaveChanges = () => {
+    if (!resumeData) return;
+    const pdfDataUri = generatePDF(resumeData);
+    // Trigger download or display the PDF
+    const link = document.createElement('a');
+    link.href = pdfDataUri;
+    link.download = 'resume.pdf';
+    link.click();
+  };
+
+  if (!resumeData) return <div>Loading...</div>;
+
   return (
-    <div className="space-y-4">
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="name">Name</Label>
-        <Input type="text" id="name" name="name" value={resume.name} onChange={handleInputChange} />
-      </div>
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="email">Email</Label>
-        <Input type="email" id="email" name="email" value={resume.contact_info.email} onChange={handleInputChange} />
-      </div>
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="phone">Phone</Label>
-        <Input type="tel" id="phone" name="phone" value={resume.contact_info.phone} onChange={handleInputChange} />
-      </div>
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="linkedin">LinkedIn</Label>
-        <Input type="url" id="linkedin" name="linkedin" value={resume.contact_info.linkedin} onChange={handleInputChange} />
-      </div>
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="summary">Summary</Label>
-        <Textarea id="summary" name="summary" value={resume.summary} onChange={handleInputChange} />
-      </div>
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="experiences">Experiences</Label>
-        <Textarea 
-          id="experiences" 
-          name="experiences" 
-          value={JSON.stringify(resume.experiences, null, 2)} 
-          onChange={(e) => onChange({ experiences: JSON.parse(e.target.value) })}
-        />
-      </div>
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="education">Education</Label>
-        <Textarea 
-          id="education" 
-          name="education" 
-          value={JSON.stringify(resume.education, null, 2)} 
-          onChange={(e) => onChange({ education: JSON.parse(e.target.value) })}
-        />
-      </div>
-      <div className="grid w-full items-center gap-1.5">
-        <Label htmlFor="skills">Skills</Label>
-        <Textarea 
-          id="skills" 
-          name="skills" 
-          value={JSON.stringify(resume.skills, null, 2)} 
-          onChange={(e) => onChange({ skills: JSON.parse(e.target.value) })}
-        />
-      </div>
-    </div>
+    <Card className="w-full max-w-xl">
+      <CardHeader>
+        <CardTitle>JSON File Editor</CardTitle>
+        <CardDescription>Edit the JSON data using form fields.</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" value={resumeData.name} onChange={(e) => handleInputChange(e, 'name')} />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="summary">Summary</Label>
+          <Input id="summary" value={resumeData.summary} onChange={(e) => handleInputChange(e, 'summary')} />
+        </div>
+        <div className="space-y-2">
+          <Label>Contact Info</Label>
+          <div className="space-y-2">
+            <Input placeholder="Email" value={resumeData.contact_info.email} onChange={(e) => handleInputChange(e, 'contact_info', undefined, 'email')} />
+            <Input placeholder="Phone" value={resumeData.contact_info.phone} onChange={(e) => handleInputChange(e, 'contact_info', undefined, 'phone')} />
+            <Input placeholder="LinkedIn" value={resumeData.contact_info.linkedin} onChange={(e) => handleInputChange(e, 'contact_info', undefined, 'linkedin')} />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <Label>Experiences</Label>
+          {resumeData.experiences.map((experience, index) => (
+            <div key={index} className="space-y-2">
+              <Input placeholder="Company" value={experience.company} onChange={(e) => handleInputChange(e, 'experiences', index, 'company')} />
+              <Input placeholder="Title" value={experience.title} onChange={(e) => handleInputChange(e, 'experiences', index, 'title')} />
+              <Input placeholder="Dates" value={experience.dates} onChange={(e) => handleInputChange(e, 'experiences', index, 'dates')} />
+              <Input placeholder="Description" value={experience.description} onChange={(e) => handleInputChange(e, 'experiences', index, 'description')} />
+            </div>
+          ))}
+        </div>
+        <div className="space-y-2">
+          <Label>Education</Label>
+          {resumeData.education.map((education, index) => (
+            <div key={index} className="space-y-2">
+              <Input placeholder="Institution" value={education.institution} onChange={(e) => handleInputChange(e, 'education', index, 'institution')} />
+              <Input placeholder="Degree" value={education.degree || ''} onChange={(e) => handleInputChange(e, 'education', index, 'degree')} />
+              <Input placeholder="Description" value={education.description || ''} onChange={(e) => handleInputChange(e, 'education', index, 'description')} />
+            </div>
+          ))}
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-end">
+        <Button onClick={handleSaveChanges} disabled={!resumeData}>Save Changes</Button>
+      </CardFooter>
+    </Card>
   );
 };
 
-export default FormFields;
+export default JsonEditor;

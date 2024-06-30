@@ -1,4 +1,4 @@
-import { ResumeData, ContactInfo, Experience, Education } from '../types';
+import { ResumeData } from '../types';
 
 export interface FormFieldsProps {
     resume: ResumeData;

@@ -4,13 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import dynamic from 'next/dynamic';
-// import JsonEditor from './JsonEditor';
 import FormFields from '@/components/(sections)/resume/Dashboard/FormFields';
 import AIAssisted from '@/components/(sections)/resume/Dashboard/AIAssistedTab';
 import PDFDocument from '@/components/(sections)/resume/Dashboard/PDFDocument';
 import generateResumeWithLLM from '@/components/(sections)/resume/Dashboard/Assistant';
 import { ResumeData } from './types';
-// import JsonEditorProps from './Dashboard/types';
 
 // Placeholder for the missing module
 const parseGeneratedResume = (data: any): ResumeData => {
@@ -18,11 +16,7 @@ const parseGeneratedResume = (data: any): ResumeData => {
   return data as ResumeData;
 };
 
-/*
-const JsonEditorWithProps: React.FC<JsonEditorProps> = ({ value, onChange }) => (
-  <JsonEditor value={value} onChange={onChange} />
-);
-*/
+const JsonEditor = dynamic(() => import('./JsonEditor'), { ssr: false });
 
 const ResumeGenerator: React.FC = () => {
   const [manualResume, setManualResume] = useState<ResumeData>({
@@ -87,7 +81,17 @@ const ResumeGenerator: React.FC = () => {
             />
           </TabsContent>
           <TabsContent value="json">
-            {/* <JsonEditorWithProps value={manualResume} onChange={setManualResume} /> */}
+            <JsonEditor
+              value={JSON.stringify(manualResume, null, 2)}
+              onChange={(value: string) => {
+                try {
+                  const parsedData = JSON.parse(value);
+                  setManualResume(parsedData);
+                } catch (error) {
+                  console.error('Invalid JSON:', error);
+                }
+              }}
+            />
           </TabsContent>
         </Tabs>
       </CardContent>
