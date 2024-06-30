@@ -24,7 +24,7 @@ const YouTubeCreatorTutorial = () => {
           <p>MrBeast is known for his over-the-top challenges and philanthropy. To become a successful YouTuber like him:</p>
           <ul>
             <li>Brainstorm unique, attention-grabbing video ideas</li>
-            <li>Focus on content that's entertaining, shocking, or heartwarming</li>
+            <li>Focus on content that&apos;s entertaining, shocking, or heartwarming</li>
             <li>Consider incorporating challenges, stunts, or acts of generosity</li>
           </ul>
         </>
@@ -48,7 +48,7 @@ const YouTubeCreatorTutorial = () => {
       title: "Build a Reliable Team",
       content: (
         <>
-          <p>MrBeast's success is partly due to his dedicated team. Consider:</p>
+          <p>MrBeast&apos;s success is partly due to his dedicated team. Consider:</p>
           <ul>
             <li>Recruiting friends or hiring professionals</li>
             <li>Assigning roles: cameramen, editors, writers, actors, etc.</li>
