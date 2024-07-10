@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
+.next
+site/node_modules
+.env
+site/.env
 # dependencies
 /node_modules
 /.pnp
