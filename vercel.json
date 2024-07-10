@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
       {
-        "src": "site/next.config.js",
+        "src": "site/next.config.mjs",
         "use": "@vercel/next"
       }
     ],
