@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { DropdownMenuTrigger, DropdownMenuItem, DropdownMenuContent, DropdownMenu } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import ColorPicker from '@/components/(features)/colorpick';
+import ColorPicker from '@/components/(features)/PickColor';
 import OutsideClickHandler from '@/components/(sections)/printondemand/hooks/OutsideClickHandler';
 
 // Define types for content structure
