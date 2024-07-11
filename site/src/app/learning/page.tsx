@@ -23,11 +23,11 @@ To read more about using these font, please visit the Next.js documentation:
 - App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
-"use client"
+"use client";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 
-export function elearningSplash() {
+export default function LearningPage() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <section className="bg-gradient-to-r from-primary to-primary-foreground py-20 md:py-32">
